@@ -15,7 +15,7 @@
 <body>
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper teal darken-3">
         <ul>
           <li>
             <a href="/" class="left brand-logo"> LifTrackr</a>
@@ -25,7 +25,7 @@
           <li><a href="/about">About</a></li>
           {% comment %} {% if user.is_authenticated %}
           <li><a href="{% url '' %}">Create Workout</a></li>
-          <li><a href="{% url 'index' %}">View My Routines</a></li>
+          {% comment %} <li><a href="{% url 'index' %}">View My Routines</a></li>
           <li><a href="{% url '' %}">Add Exercise</a></li>
           <li><a href="{% url '' %}">View All Exercises</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -38,7 +38,7 @@
     </nav>
   </header>
   <main class="container">{% block content %} {% endblock %}</main>
-  <footer class="page-footer">
+  <footer class="page-footer teal darken-3">
     <div class="right">
       All Rights Reserved, © 2023 LifTrackr
       <li class="right"><a href="/admin">Admin</a></li>
