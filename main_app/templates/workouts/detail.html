@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Routine Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ cat.name }}</span>
+        <p>Target Muscles: {{ workout.target }}</p>
+        <p>Description: {{ workout.description }}</p>
+      </div>
+        <div class="card-action">
+          <a href="{% url 'workouts_update' workout.id %}">Edit</a>
+          <a href="{% url 'workouts_delete' workout.id %}">Delete</a>
+        </div>
+    </div>
+    {% for photo in cat.photo_set.all %}
+      <img src="{{ photo.url }}" alt="{{ cat.name }}">
+    {% empty %}
+      <div class="card-panel teal-text center-align">No Photos</div>
+    {% endfor %}
+  </div>
+  <div class="col s6">
+    <form action="{% url 'logging' workout.id %}" method="POST">
+      {% csrf_token %}
+      {{ logging_form.as_p }}
+      <input type="submit" value="Record Workout" class="btn blue">
+    </form>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for logging in workout.logging_set.all %}
+          <tr>
+            <td>{{ loggin.date }}</td>
+            <td>{{ logging.get_effort_display }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ workout.name }}'s Toys</h3>
+    {% if workout.exercises.count %}
+      {% for exercise in workout.exercises.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+                <span>{{ Exercise.name }}</span>
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+        <h5>{{ workout.name }} doesn't have associated exercises yet!</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Available Exercises</h3>
+    {% if exercises.count %}
+      {% for exercise in exercises %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span>{{ exercise.name }}</span>
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'add_exercise' workout.id exercise.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Add" class="btn">
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+    <h5>{{ workout.name }} Already Has All Exercises Currently Available</h5>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+// variables
+const dateEl = document.getElementById('id_date');
+const effortEl = document.getElementById('id_effort');
+
+// materialize form widget config
+M.Datepicker.init(dateEl, {
+  format: 'yyyy-mm-dd',
+  defaultDate: new Date(),
+  setDefaultDate: true,
+  autoClose: true
+});
+
+M.FormSelect.init(effortEl);
+
+</script>
+
+{% endblock %}
