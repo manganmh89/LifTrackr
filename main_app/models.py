@@ -25,7 +25,7 @@ class Workout(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("detail", kwargs={'workout_id': self.id})
+        return reverse('detail', kwargs={'workout_id': self.id})
 
 class Logging(models.Model):
     EFFORTS = (
@@ -37,7 +37,6 @@ class Logging(models.Model):
     )
 
     date = models.DateField('workout date')
-    time = models.DateTimeField(auto_now_add=True)
     effort = models.CharField(max_length=5, choices=EFFORTS, default=EFFORTS[0][0], verbose_name='effort given')
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
 

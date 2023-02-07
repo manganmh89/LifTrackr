@@ -8,7 +8,7 @@
   <div class="col s6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ cat.name }}</span>
+        <span class="card-title">{{ workout.name }}</span>
         <p>Target Muscles: {{ workout.target }}</p>
         <p>Description: {{ workout.description }}</p>
       </div>
@@ -16,13 +16,7 @@
           <a href="{% url 'workouts_update' workout.id %}">Edit</a>
           <a href="{% url 'workouts_delete' workout.id %}">Delete</a>
         </div>
-    </div>
-    {% for photo in cat.photo_set.all %}
-      <img src="{{ photo.url }}" alt="{{ cat.name }}">
-    {% empty %}
-      <div class="card-panel teal-text center-align">No Photos</div>
-    {% endfor %}
-  </div>
+      </div>
   <div class="col s6">
     <form action="{% url 'logging' workout.id %}" method="POST">
       {% csrf_token %}
@@ -33,13 +27,13 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Time</th>
+          <th>Effort</th>
         </tr>
       </thead>
       <tbody>
         {% for logging in workout.logging_set.all %}
           <tr>
-            <td>{{ loggin.date }}</td>
+            <td>{{ logging.date }}</td>
             <td>{{ logging.get_effort_display }}</td>
           </tr>
         {% endfor %}
@@ -50,16 +44,16 @@
 <hr>
 <div class="row">
   <div class="col s6">
-    <h3>{{ workout.name }}'s Toys</h3>
+    <h3>{{ workout.name }} contains...</h3>
     {% if workout.exercises.count %}
       {% for exercise in workout.exercises.all %}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">
-                <span>{{ Exercise.name }}</span>
-            </span>
-          </div>
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">
+            <span class="{{ exercise.sets.lower }}-text">{{ exercise.sets }}</span> {{ exercise.name }}
+          </span>
         </div>
+      </div>
       {% endfor %}
     {% else %}
         <h5>{{ workout.name }} doesn't have associated exercises yet!</h5>
@@ -90,11 +84,8 @@
 </div>
 
 <script>
-// variables
-const dateEl = document.getElementById('id_date');
-const effortEl = document.getElementById('id_effort');
-
 // materialize form widget config
+const dateEl = document.getElementById('id_date');
 M.Datepicker.init(dateEl, {
   format: 'yyyy-mm-dd',
   defaultDate: new Date(),
@@ -102,7 +93,8 @@ M.Datepicker.init(dateEl, {
   autoClose: true
 });
 
-M.FormSelect.init(effortEl);
+const selectEl = document.getElementById('id_effort');
+M.FormSelect.init(selectEl);
 
 </script>
 

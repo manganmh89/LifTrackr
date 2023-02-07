@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import Feeding
+from .models import Logging
 
 class LoggingForm(ModelForm):
     class Meta:
         model = Logging
-        fields = ('__all__')
+        fields = ['date', 'effort']
