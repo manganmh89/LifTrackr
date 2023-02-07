@@ -23,16 +23,16 @@
         </ul>
         <ul class="right">
           <li><a href="/about">About</a></li>
-          {% comment %} {% if user.is_authenticated %}
-          <li><a href="{% url '' %}">Create Workout</a></li>
-          {% comment %} <li><a href="{% url 'index' %}">View My Routines</a></li>
-          <li><a href="{% url '' %}">Add Exercise</a></li>
-          <li><a href="{% url '' %}">View All Exercises</a></li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
-          {% else %}
-          <li><a href="{% url 'login' %}">Log In</a></li>
-          <li><a href="{% url 'signup' %}">Signup</a></li>
-          {% endif %} {% endcomment %}
+          {% comment %} {% if user.is_authenticated %} {% endcomment %}
+          <li><a href="{% url 'workouts_create' %}">Create Workout</a></li>
+          <li><a href="{% url 'index' %}">View My Routines</a></li>
+          <li><a href="{% url 'exercises_create' %}">Add Exercise</a></li>
+          <li><a href="{% url 'exercises_index' %}">View All Exercises</a></li>
+          {% comment %} <li><a href="{% url 'logout' %}">Log Out</a></li> {% endcomment %}
+          {% comment %} {% else %} {% endcomment %}
+          {% comment %} <li><a href="{% url 'login' %}">Log In</a></li> {% endcomment %}
+          {% comment %} <li><a href="{% url 'signup' %}">Signup</a></li> {% endcomment %}
+          {% comment %} {% endif %}  {% endcomment %}
         </ul>
       </div>
     </nav>

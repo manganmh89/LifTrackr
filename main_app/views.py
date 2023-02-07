@@ -11,13 +11,14 @@ def about(request):
     return render(request, 'about.html')
 
 def workouts_index(request):
+    workouts = Workout.objects.filter()
     return render(request, 'workouts/index.html', { 'workouts': workouts })
 
 def workouts_detail(request):
     workout = Workout.objects.get(id=workout_id)
     logging_form = LoggingForm()
-    exercises_workout_dn_have = Exercise.objects.exclude(id__in=workout.exercise.all().values_list('id'))
-    return render(request, 'workouts/detail.html', {
+    exercises_workout_dn_have = Exercise.objects.exclude(id__in=workout.exercises.all().values_list('id'))
+    return render(request, '/workouts/detail.html', {
         'workout': workout,
         'logging_form': logging_form,
         'exercises': exercises_workout_dn_have
