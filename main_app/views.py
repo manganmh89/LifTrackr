@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import uuid
 
 def home(request):
     return render(request, 'home.html')
@@ -60,24 +61,24 @@ def signup(request):
     return redirect('index')
   else:
     error_message = 'invalid credentials'
-  form = UserCreationForm()
+    form = UserCreationForm()
   return render(request, 'registration/signup.html', {
     'form': form,
     'error_message': error_message
   })
 
 class WorkoutCreate(LoginRequiredMixin, CreateView):
-    model = Workout
-    fields = ('__all__')
-    # success_url = '/workouts/'
+  model = Workout
+  fields = ('name', 'target', 'description')
+  success_url = '/workouts/'
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 class WorkoutUpdate(LoginRequiredMixin, UpdateView):
   model = Workout
-  fields = ('__all__')
+  fields = ('name', 'target', 'description')
 
 class WorkoutDelete(LoginRequiredMixin, DeleteView):
   model = Workout

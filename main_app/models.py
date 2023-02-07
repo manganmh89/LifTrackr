@@ -36,7 +36,6 @@ class Logging(models.Model):
         ('****', '4 Star'),
         ('*****', '5 Star'),
     )
-
     date = models.DateField('workout date')
     effort = models.CharField(max_length=5, choices=EFFORTS, default=EFFORTS[0][0], verbose_name='effort given')
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
