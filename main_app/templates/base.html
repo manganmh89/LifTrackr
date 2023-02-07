@@ -23,16 +23,16 @@
         </ul>
         <ul class="right">
           <li><a href="/about">About</a></li>
-          {% comment %} {% if user.is_authenticated %} {% endcomment %}
+          {% if user.is_authenticated %}
           <li><a href="{% url 'workouts_create' %}">Create Workout</a></li>
           <li><a href="{% url 'index' %}">View My Routines</a></li>
           <li><a href="{% url 'exercises_create' %}">Add Exercise</a></li>
           <li><a href="{% url 'exercises_index' %}">View All Exercises</a></li>
-          {% comment %} <li><a href="{% url 'logout' %}">Log Out</a></li> {% endcomment %}
-          {% comment %} {% else %} {% endcomment %}
-          {% comment %} <li><a href="{% url 'login' %}">Log In</a></li> {% endcomment %}
-          {% comment %} <li><a href="{% url 'signup' %}">Signup</a></li> {% endcomment %}
-          {% comment %} {% endif %}  {% endcomment %}
+          <li><a href="{% url 'logout' %}">Log Out</a></li> 
+          {% else %} 
+          <li><a href="{% url 'login' %}">Log In</a></li> 
+          <li><a href="{% url 'signup' %}">Signup</a></li> 
+          {% endif %}  
         </ul>
       </div>
     </nav>
