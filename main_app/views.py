@@ -93,6 +93,7 @@ class ExerciseDetail(LoginRequiredMixin, DetailView):
 class ExerciseCreate(LoginRequiredMixin, CreateView):
   model = Exercise
   fields = '__all__'
+  success_url = '/exercises/'
 
 class ExerciseUpdate(LoginRequiredMixin, UpdateView):
   model = Exercise

@@ -51,6 +51,7 @@
         <div class="card-content">
           <span class="card-title">
             <span class="{{ exercise.sets.lower }}-text">{{ exercise.sets }}</span> {{ exercise.name }}
+            <a href="{% url 'remove_exercise' workout.id exercise.id %}" class="btn red">Remove</a>
           </span>
         </div>
       </div>
