@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView, DetailView
-from .models import Workout, Exercise
+from .models import Workout, Exercise, Logging
 from .forms import LoggingForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-import uuid
+
 
 def home(request):
     return render(request, 'home.html')
@@ -24,6 +24,7 @@ def workouts_index(request):
 def workouts_detail(request, workout_id):
     workout = Workout.objects.get(id=workout_id)
     logging_form = LoggingForm()
+    # loggings_workout_dn_have = Logging.objects.exclude(id__in=workout.exercises.all().values_list('id'))
     exercises_workout_dn_have = Exercise.objects.exclude(id__in=workout.exercises.all().values_list('id'))
     return render(request, 'workouts/detail.html', {
         'workout': workout,
@@ -40,6 +41,16 @@ def logging(request, workout_id):
     new_logging.save()
   return redirect('detail', workout_id=workout_id)
 
+# @login_required
+# def add_logging(request, workout_id):
+#   Workout.objects.get(id=workout_id).logging.add(logging_id)
+#   return redirect ('detail', workout_id=workout_id)
+
+# @login_required
+# def remove_logging(request, workout_id, logging_id):
+#   Workout.objects.get(id=workout_id).logging.remove(logging_id)
+#   return redirect('detail', workout_id=workout_id)
+
 @login_required
 def add_exercise(request, workout_id, exercise_id):
   Workout.objects.get(id=workout_id).exercises.add(exercise_id)
@@ -49,6 +60,8 @@ def add_exercise(request, workout_id, exercise_id):
 def remove_exercise(request, workout_id, exercise_id):
   Workout.objects.get(id=workout_id).exercises.remove(exercise_id)
   return redirect('detail', workout_id=workout_id)
+
+
 
 def signup(request):
   error_message = ''
@@ -102,3 +115,24 @@ class ExerciseUpdate(LoginRequiredMixin, UpdateView):
 class ExerciseDelete(LoginRequiredMixin, DeleteView):
   model = Exercise
   success_url = '/exercises/'
+
+# class LoggingIndex(LoginRequiredMixin, ListView):
+#   model = Logging
+#   fields = ('date', 'effort')
+#   success_url = '/loggings/'
+
+# class LoggingDetail(LoginRequiredMixin, DetailView):
+#   model = Logging
+
+# class LoggingCreate(LoginRequiredMixin, CreateView):
+#   model = Logging
+#   fields = ('date', 'effort')
+#   success_url = '/loggings/'
+
+# class LoggingUpdate(LoginRequiredMixin, UpdateView):
+#   model = Logging
+#   fields = '__all__'
+
+# class LoggingDelete(LoginRequiredMixin, DeleteView):
+#   model = Logging
+#   success_url = '/loggings/'

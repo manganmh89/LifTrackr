@@ -21,7 +21,7 @@
     <form action="{% url 'logging' workout.id %}" method="POST">
       {% csrf_token %}
       {{ logging_form.as_p }}
-      <input type="submit" value="Record Workout" class="btn blue">
+      <input type="submit" value="Record Workout" class="btn">
     </form>
     <table class="striped">
       <thead>
@@ -35,6 +35,13 @@
           <tr>
             <td>{{ logging.date }}</td>
             <td>{{ logging.get_effort_display }}</td>
+            {% comment %} <td>
+              <form action="{% url 'remove_logging' workout.id logging.id  %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">X</button>
+              </form> 
+              <a href="{% url 'remove_logging' workout.id logging.id %}" class="btn btn-danger">X</a>
+            </td> {% endcomment %}
           </tr>
         {% endfor %}
       </tbody>
@@ -51,7 +58,6 @@
         <div class="card-content">
           <span class="card-title">
             <span class="{{ exercise.sets.lower }}-text">{{ exercise.sets }}</span> {{ exercise.name }}
-            <a href="{% url 'remove_exercise' workout.id exercise.id %}" class="btn red">Remove</a>
           </span>
         </div>
       </div>

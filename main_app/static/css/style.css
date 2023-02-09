@@ -18,3 +18,9 @@ footer {
     padding-top: 0;
     text-align: right;
 }
+
+.home-container {
+    width: 100%;
+    background-image: url('../images/gym.jpeg');
+    background-size: cover;
+}
