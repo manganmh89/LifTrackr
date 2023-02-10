@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView, DetailView
-from .models import Workout, Exercise, Logging
+from .models import Workout, Exercise
 from .forms import LoggingForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -60,8 +60,6 @@ def add_exercise(request, workout_id, exercise_id):
 def remove_exercise(request, workout_id, exercise_id):
   Workout.objects.get(id=workout_id).exercises.remove(exercise_id)
   return redirect('detail', workout_id=workout_id)
-
-
 
 def signup(request):
   error_message = ''

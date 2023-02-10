@@ -35,13 +35,6 @@
           <tr>
             <td>{{ logging.date }}</td>
             <td>{{ logging.get_effort_display }}</td>
-            {% comment %} <td>
-              <form action="{% url 'remove_logging' workout.id logging.id  %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">X</button>
-              </form> 
-              <a href="{% url 'remove_logging' workout.id logging.id %}" class="btn btn-danger">X</a>
-            </td> {% endcomment %}
           </tr>
         {% endfor %}
       </tbody>
@@ -58,6 +51,10 @@
         <div class="card-content">
           <span class="card-title">
             <span class="{{ exercise.sets.lower }}-text">{{ exercise.sets }}</span> {{ exercise.name }}
+            <form action="{% url 'remove_exercise' workout.id exercise.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Remove" class="btn">
+            </form>
           </span>
         </div>
       </div>
