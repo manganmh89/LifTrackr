@@ -1,9 +1,24 @@
 {%  extends 'base.html' %} 
 
+{% block mainclass %}
+homeBackground
+{% endblock %}
+
 {% block content %}
-<div class="home-container">
-    <h1> Welcome </h1>
+<div class="homePage">
+    <div class="leftside">
+
+    </div>
+    <div class="rightside">
+        <div class="homeBodyContainer">
+            <h1 class="center-align"> Enter </h1>
+            <div class="loginSignup">
+            <a class="btn btn-large lime " href="{% url 'login' %}">Log In</a>
+            <a class="btn btn-large lime " href="{% url 'signup' %}">Signup</a>
+        </div>
+    </div>
 </div>
 
 
-{% endblock %}
+
+{% endblock %}s

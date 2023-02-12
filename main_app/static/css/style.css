@@ -1,26 +1,108 @@
-
-.left {
-    margin: 10px;
+header {
+    
 }
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-image: linear-gradient(to bottom right, #1de9b6, #2D3142)
+    background-color: #2D3142;
+    color: greenyellow;
+    font-family: 'Kanit', sans-serif;
 }
 
 main {
+    display: block;
+    flex-wrap: wrap;
     flex: 1 0 auto;
+    font-family: 'Kanit', sans-serif;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
     padding-top: 0;
     text-align: right;
+    font-family: 'Kanit', sans-serif;
+}
+.right {
+    display: flex;
 }
 
-.home-container {
-    width: 100%;
-    background-image: url('../images/gym.jpeg');
+.homePage {
+    background-image: url(../images/weight.jpeg);
+    background-repeat: no-repeat;
     background-size: cover;
+    display:flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Kanit', sans-serif;
+    overflow-y: hidden;
+}
+
+img {
+    display: 100vh;
+}
+
+.rightside {
+    flex: 0.5;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+}
+
+.homeBodyContainer {
+    /* display: block; */
+    margin-left: 25px;
+    color: white;
+    background-color: #453c33;
+    min-height: 250px;
+    align-items: center;
+    position: relative;
+}
+.loginSignup {
+    display: flex;
+    margin-top: 75px;
+    justify-content:space-around;
+}
+
+.loginSignup: hover {
+    filter: invert(50%);
+}
+
+.aboutBackground {
+    background-color: #2D3142;
+}
+
+.aboutPage {
+    background-color: #2D3142;s
+    color: whitesmoke;
+    display:flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.addExercise, .addWorkout {
+    align-items: center;
+    justify-content: center;
+    margin-top: 400px;
+    position: relative;
+    max-width: fit-content;
+    display: block;
+}
+
+.newMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-brand-logo {
+    margin-left: 10px;
+    font-size: 34px;
 }

@@ -5,9 +5,9 @@
 <h1>Workout List</h1>
 
 {% for workout in workouts %}
-<div class="card">
+<div class="card lime lighten-2">
   <a href="{% url 'detail' workout.id %}">
-  <div class="card-content">
+    <div class="card-content grey darken-3">
     <span class="card-title">{{ workout.name }}</span>
     <p>Target Muscles: {{ workout.target }}</p>
     <p>Description: {{ workout.description }}</p>

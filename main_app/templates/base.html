@@ -9,6 +9,9 @@
   <title>LifTrackr</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
@@ -16,32 +19,34 @@
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper teal darken-3">
-        <ul>
-          <li>
-            <a href="/" class="left brand-logo"> LifTrackr</a>
-          </li>
-        </ul>
+        <a href="/" class="left-brand-logo"> LifTrackr</a>
+        <a href="https://www.flaticon.com/free-icons/sports-and-competition" title="sports-and-competition icons"></a>
+        <img src="" alt="weight" width="50px" height="50px">
         <ul class="right">
-          <li><a href="/about">About</a></li>
+          <li class="lime darken-3"><a href="/about">About</a></li>
           {% if user.is_authenticated %}
-          <li><a href="{% url 'workouts_create' %}">Create Workout</a></li>
-          <li><a href="{% url 'index' %}">View My Routines</a></li>
-          <li><a href="{% url 'exercises_create' %}">Add Exercise</a></li>
-          <li><a href="{% url 'exercises_index' %}">View All Exercises</a></li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li> 
+          <li class="lime darken-3"><a href="{% url 'workouts_create' %}">Create Workout</a></li>
+          <li class="lime darken-3"><a href="{% url 'index' %}">View My Routines</a></li>
+          <li class="lime darken-3"><a href="{% url 'exercises_create' %}">Add Exercise</a></li>
+          <li class="lime darken-3"><a href="{% url 'exercises_index' %}">View All Exercises</a></li>
+          <li class="lime darken-3"><a href="{% url 'logout' %}">Log Out</a></li> 
           {% else %} 
-          <li><a href="{% url 'login' %}">Log In</a></li> 
-          <li><a href="{% url 'signup' %}">Signup</a></li> 
+          {% comment %} <li><a href="{% url 'login' %}">Log In</a></li>  {% endcomment %}
+          {% comment %} <li><a href="{% url 'signup' %}">Signup</a></li>  {% endcomment %}
           {% endif %}  
         </ul>
-      </div>
+      {% comment %} </div> {% endcomment %}
+    </div>
     </nav>
   </header>
-  <main class="container">{% block content %} {% endblock %}</main>
+  <main class="{% block mainclass %}{% endblock %}">
+    {% block content %}
+    {% endblock %}
+  </main>
   <footer class="page-footer teal darken-3">
-    <div class="right">
+    <div class="footer">
       All Rights Reserved, © 2023 LifTrackr
-      <li class="right"><a href="/admin">Admin</a></li>
+      <a href="/admin">Admin</a>
     </div>
   </footer>
 </body>

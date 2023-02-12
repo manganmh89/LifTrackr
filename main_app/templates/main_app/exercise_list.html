@@ -5,9 +5,9 @@
 <h1>Exercises to choose from</h1>
 
 {% for exercise in object_list %}
-<div class="card">
+<div class="card lime lighten-2">
   <a href="{% url 'exercises_detail' exercise.id %}" >
-  <div class="card-content">
+    <div class="card-content grey darken-3">
     <span class="card-title"> 
       <span> {{ exercise.name }} </span>
   </div>

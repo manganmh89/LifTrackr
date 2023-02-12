@@ -2,18 +2,20 @@
 
 {% block content%}
 
-<form action='' method='POST' autocomplete="off">
-    
-    {% csrf_token %}
-    {% if object %}
-    <h1> Edit <span class="teal-text">{{ object.name }}</span></h1>
-    {% else %}
-    <h1>Add Workout</h1>
-    {% endif%}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit" class="btn" />
-</form>
-
-{% endblock%}
+<div class="newMain">
+<div class="addWorkout">
+    <form action='' method='POST' autocomplete="off">
+        {% csrf_token %}
+        {% if object %}
+        <h1> Edit <span class="teal-text">{{ object.name }}</span></h1>
+        {% else %}
+        <h1>Add Workout</h1>
+        {% endif%}
+        <table>
+           {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" class="btn" />
+    </form>
+</div>
+</div>
+{% endblock %}
