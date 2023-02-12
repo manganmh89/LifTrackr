@@ -83,7 +83,7 @@ img {
     align-items: center;
 }
 
-.addExercise, .addWorkout {
+.addExercise, .addWorkout, .addLogin {
     align-items: center;
     justify-content: center;
     margin-top: 400px;
