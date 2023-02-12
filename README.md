@@ -2,7 +2,7 @@
 
 ## About this Project
 
-This app was built as a companion to all of your future workouts! The LifTrackr is mobile friendly and able to create both routines and exercises. User's can custom create the routine of their dreams. With a simple and sleek interface, recording data from your workout will be streamlined so that you can focus on your lift. 
+This app was built as a companion to all of your future workouts! The LifTrackr is mobile friendly and able to create both routines and exercises. User's can custom create the routine of their dreams. With a simple and sleek interface, recording data from your workout will be streamlined so that you can focus on your lift.
 
 ## Built With
 
@@ -13,7 +13,7 @@ This app was built as a companion to all of your future workouts! The LifTrackr 
 - Git/Github - Github Pages for Hosting
 - Heroku Deployment
 
-[![Technology Used](https://skillicons.dev/icons?i=html,css,javascript,mongodb,express,react,github,heroku,netlify&theme=light)](https://skillicons.dev)
+[![Technology Used](https://skillicons.dev/icons?i=html,css,postgres,django,github,heroku,&theme=light)](https://skillicons.dev)
 
 ## Screenshots
 
